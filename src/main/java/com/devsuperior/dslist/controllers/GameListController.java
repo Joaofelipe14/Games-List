@@ -1,8 +1,11 @@
 package com.devsuperior.dslist.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +25,7 @@ public class GameListController {
 
 	@Autowired
 	private GameListService gameListService;
-	
+
 	@Autowired
 	private GameService gameService;
 
@@ -31,7 +34,7 @@ public class GameListController {
 		GameListDTO result = gameListService.findById(id);
 		return result;
 	}
-	
+
 	@GetMapping
 	public List<GameListDTO> findAll() {
 		List<GameListDTO> result = gameListService.findAll();
@@ -43,9 +46,19 @@ public class GameListController {
 		List<GameMinDTO> result = gameService.findByGameList(listId);
 		return result;
 	}
-	
+
 	@PostMapping(value = "/{listId}/replacement")
 	public void move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
 		gameListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
+	}
+
+	@PostMapping
+	public ResponseEntity<Map<String, Object>> create(@RequestBody GameListDTO dto) {
+		GameListDTO result = gameListService.create(dto);
+
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(Map.of(
+						"message", "Lista de jogos criada com sucesso!",
+						"gameList", result));
 	}
 }

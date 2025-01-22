@@ -48,4 +48,13 @@ public class GameListService {
 		GameList entity = gameListRepository.findById(id).get();
 		return new GameListDTO(entity);
 	}
+
+	@Transactional
+    public GameListDTO create(GameListDTO dto) {
+        GameList entity = new GameList();
+        entity.setName(dto.getName());
+        entity = gameListRepository.save(entity);
+
+        return new GameListDTO(entity);
+    }
 }
