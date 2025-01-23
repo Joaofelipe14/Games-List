@@ -19,7 +19,6 @@ O **DSList** é um projeto desenvolvido com o objetivo de ensinar os fundamentos
 ### 1. **Cadastro de Jogo**
 
 - **Rota**: `POST /games`
-- **Descrição**: Endpoint criado por mim para cadastrar um novo jogo. Este endpoint recebe os dados do jogo no corpo da requisição e os salva no banco de dados.
   
 **Exemplo de corpo da requisição**:
 
@@ -46,7 +45,7 @@ Além dos tópicos ensinados durante o curso, que cobrem apenas a parte de leitu
 
 ### 1. Endpoints para Cadastrar Jogos e Listas de Jogos
 
-- **Cadastro de Jogos**: Eu criei o endpoint `POST /games` para permitir que o usuário adicione novos jogos ao sistema. Isso facilita a expansão da lista de jogos.
+- **Cadastro de Jogos**:   Endpoint `POST /games` para permitir que o usuário adicione novos jogos ao sistema. Isso facilita a expansão da lista de jogos.
 - **Cadastro de Listas de Jogos**: Com a criação do endpoint `POST /game-lists`, agora é possível organizar jogos em diferentes listas de categorias.
 
 ### 2. Deletar Jogos
